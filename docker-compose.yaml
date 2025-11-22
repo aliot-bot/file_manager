@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  file-manager:
+    build: .
+    container_name: file-manager
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./storage:/app/storage
+    restart: unless-stopped
+
+# дальше для постгреса, а также можно было без докер компоса обойтись 

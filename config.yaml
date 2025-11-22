@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  max_upload_size: 10485760 
+
+storage:
+  base_path: "./storage"
+
+static:
+  path: "./static"
+  template_file: "index.html"
+
+file:
+  max_name_length: 255
+  dir_permissions: 0755
+  forbidden_extensions:
+    - ".env"
+    - ".gitignore"
+    - ".DS_Store"
+    - ".git"
+    - ".htaccess"
+  valid_name_regex: "^[\\w\\-. ]+$"
+
+routes:
+  browse: "/"
+  browse_alt: "/browse/"
+  upload: "/upload"
+  create_folder: "/create-folder"
+  delete: "/delete"
+  rename: "/rename"
+  download: "/download"
+  download_folder: "/download-folder"
+
+messages:
+  cannot_list_directory: "Cannot list directory"
+  template_error: "Template Error"
+  render_error: "Render Error"
+  forbidden_file: "Forbidden file"
+  cannot_serve: "Cannot serve"
+  cannot_delete: "Cannot delete"
+  internal_error: "Internal Server Error"

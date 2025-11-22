@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Manager</title>
+    <style>
+        input,
+        button {
+            margin: 2px;
+        }
+
+        .folder {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>File Manager</h1>
+
+    <p><strong>Path:</strong> {{.Path}}</p>
+
+    {{if ne .Path ""}}
+    <p><a href="/?path={{.Parent}}">⬅ Back</a></p>
+    {{end}}
+
+    <h2>Upload File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="path" value="{{.Path}}">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Create Folder</h2>
+    <form action="/create-folder" method="post">
+        <input type="hidden" name="path" value="{{.Path}}">
+        <input type="text" name="name" placeholder="Folder name">
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Files & Folders</h2>
+    <ul>
+        {{range .Files}}
+        {{$fullPath := .Name}}
+        {{if ne $.Path ""}}{{$fullPath = printf "%s/%s" $.Path .Name}}{{end}}
+        <li>
+            {{if .IsDir}}
+            <a class="folder" href="/?path={{$fullPath}}">{{.Name}}</a>
+            <a href="/download-folder?path={{$fullPath}}">Download Folder</a>
+            {{else}}
+            {{.Name}}
+            <a href="/download?path={{$fullPath}}">Download</a>
+            {{end}}
+            <a href="/delete?path={{$fullPath}}">Delete</a>
+            <form action="/rename" method="post" style="display:inline;">
+                <input type="hidden" name="old" value="{{$fullPath}}">
+                <input type="text" name="new" placeholder="New name">
+                <button type="submit">Rename</button>
+            </form>
+        </li>
+        {{end}}
+    </ul>
+</body>
+
+</html>

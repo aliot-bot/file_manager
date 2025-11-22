@@ -1,0 +1,12 @@
+/bin/
+/pkg/
+*.exe
+*.out
+*.test
+file-manager
+.vscode/
+.idea/
+*.iml
+.DS_Store
+
+/storage/
