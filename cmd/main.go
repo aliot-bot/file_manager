@@ -24,8 +24,8 @@ const shutdownTimeout = 5 * time.Second
 func main() {
 	cfg := config.LoadConfig("config.yaml")
 
-	// Надо убедиться, что директория существует прежде чем запускать сервер.
-	// Грубо говоря, чтобы нам было куда записывать.
+	// надо убедиться, что директория существует прежде чем запускать сервер.
+	// грубо говоря, чтобы нам было куда записывать.
 	if err := os.MkdirAll(cfg.Storage.BasePath, cfg.File.DirPermissions); err != nil {
 		logrus.Fatalf("Failed to create storage directory: %v", err)
 	}
