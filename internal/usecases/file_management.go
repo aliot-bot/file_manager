@@ -32,7 +32,7 @@ func NewFileManagementUseCase(storage domain.FileStorage, cfg *config.Config) *F
 	}
 }
 
-// (НА БУДУЩЕЕ, ЕСЛИ БУДУ НАСТРАИВАТЬ УДАЛЕННЫЙ ДОСТУП) sanitizePath нужен для нормализации путей, чтобы атаки через обход директорий.
+// sanitizePath нужен для нормализации путей, чтобы атаки через обход директорий.
 func (uc *FileManagementUseCase) sanitizePath(path string) (string, error) {
 	clean := filepath.Clean(path)
 

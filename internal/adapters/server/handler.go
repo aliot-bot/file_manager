@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/sirupsen/logrus"
+
 	"file-manager/internal/config"
 	"file-manager/internal/domain"
-
-	"github.com/sirupsen/logrus"
 )
 
 type Handler struct {
