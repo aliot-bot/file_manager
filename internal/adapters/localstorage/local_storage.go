@@ -36,7 +36,7 @@ func (s *LocalStorageService) ReadDirectory(relPath string) ([]os.FileInfo, erro
 	for _, e := range entries {
 		info, infoErr := e.Info()
 		if infoErr != nil {
-			// пропуск файл, например, с битыми симлинки.
+			// пропуск файл, например, с битыми симлинками.
 			logrus.Warnf("Failed to get info for %s: %v", e.Name(), infoErr)
 			continue
 		}
